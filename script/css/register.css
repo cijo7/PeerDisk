@@ -1,0 +1,24 @@
+
+
+.registerMsg{
+    margin-top: 3em;
+    margin-left: 10%;
+    margin-top: 150px;
+    width: 70%;
+    font-family: Tahoma, Geneva, sans-serif;
+    text-align: center;
+    padding: 1em 1em;
+    height: 3em;
+}
+
+.cform{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 20%;
+    width: 60%;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+    padding: 100px 50px;
+}

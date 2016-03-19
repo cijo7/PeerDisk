@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/
+xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Hello Ajax World</title>
+<script type="text/javascript">
+function createXHR()
+{
+try { return new XMLHttpRequest(); } catch(e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); } catch (e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); } catch (e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
+try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}
+alert("XMLHttpRequest not supported");
+return null;
+}
+function sendRequest()
+{
+   var msg=document.getElementById("msg").value;
+var xhr = createXHR();
+if (xhr)
+{
+    
+xhr.open("GET","http://localhost/sample.php?msg="+msg,true);
+xhr.onreadystatechange = function(){handleResponse(xhr);};
+xhr.send(null);
+}
+}
+function handleResponse(xhr)
+{
+if (xhr.readyState == 4 && xhr.status == 200)
+{
+var parsedResponse = xhr.responseXML;
+var responseOutput = document.getElementById("responseOutput");
+c=parsedResponse.getElementsByTagName("count")[0].firstChild.nodeValue;
+var msgin,msgout,msg="" ;
+for(i=0;i<c;i++)
+{
+        msgin= tag(parsedResponse,"msgin",i);
+        msgout=tag(parsedResponse,"msgout",i);
+        if(msgin!=null)
+        {
+            msg=msg+"Bob:"+msgin+"<br/>";
+        }
+        if(msgout!=null)
+        {
+            msg=msg+"Cijo:"+msgout+"<br/>";
+        }
+       
+}
+     
+
+responseOutput.innerHTML = msg;
+
+
+}
+
+}
+function tag( p, name,i)
+{
+    try{
+        return p.getElementsByTagName(name)[i].firstChild.nodeValue;
+        
+    } catch(e){ return null;}
+        
+}
+
+</script>
+</head>
+<body>
+    <form action="#" onsubmit="sendRequest()">
+        <input type="text" id="msg"/>
+        <input type="submit" value="Send"/>
+    </form>
+<br /><br />
+<div id="responseOutput"></div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+#deny acess to user post info
+Deny from  all
