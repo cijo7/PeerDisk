@@ -1,2 +1,4 @@
 usr/content/photo/*
 usr/content/post/*.xml
+
+!usr/content/photo/*.txt
