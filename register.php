@@ -230,8 +230,8 @@ require 'script/php/header.php';
     function sentMail($to,$firstName,$token,$code)
     {
         $url=  getRoot()."/confirm.php?sand=$token&box=".urlencode($to)."&src=mail&action=101";
-        $from = 'CUBEBeans SignUp@cubebeans.tk';
-        $subject="$firstName ,Confirm Your CUBEBeans Account";
+        $from = 'signup@peerdisk.tk';
+        $subject="$firstName ,Confirm Your PeerDisk Account";
         $headers = "From: " . strip_tags($from) . "\r\n";
         $headers .= "Reply-To: ". strip_tags($from) . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
@@ -240,7 +240,7 @@ require 'script/php/header.php';
                 . "<h3>Confirm SignUp!</h3>"
                 . "<br/><br/><br/>"
                 . "<span>Hello $firstName,</span><br/>"
-                . "<p>Thank you for registering at CUBEBeans. To confirm your E-mail address <a href='$url'>Click Here</a> </p>"
+                . "<p>Thank you for registering at PeerDisk. To confirm your E-mail address <a href='$url'>Click Here</a> </p>"
                 . "<br/>"
                 . "<p><b>Or</b></p><br/>"
                 . "<p>Use This Code:$code</p><br/><br/><br/>"
@@ -248,10 +248,10 @@ require 'script/php/header.php';
                 . ""
                 . "----------------------------------------------------------------------------"
                 . "<br/>"
-                . "<p>You are receving this mail beacuse you have registered at CUBEbeans!"
+                . "<p>You are receving this mail beacuse you have registered at PeerDisk!"
                 . "If this wasn't you please ignore this</p><br/>"
                 . "<span>Regards<span><br/>"
-                . "<span>CUBEBeans Team<span>"
+                . "<span>PeerDisk Team<span>"
                 . "</div>";
         $result=mail($to, $subject, $message, $headers);
         if($result)
